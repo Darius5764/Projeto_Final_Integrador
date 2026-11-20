@@ -18,7 +18,7 @@ Aplicação web (Java + JSP) com três áreas:
 | Apache Tomcat | 10.1 (não usar o 9 nem o 11) |
 | MariaDB | 10.11 ou 11.4 |
 | Maven | 3.9 (incluído no IntelliJ / Eclipse) |
-| Servidor | Windows Server 2022 (VM em VirtualBox, rede em bridge) |
+| Servidor | PC com Windows 10/11 na rede da escola (sem VM) |
 
 ## Como correr no teu PC
 
@@ -80,16 +80,30 @@ VALUES ('Gestor Demo', 'gestor', 'HASH-QUE-APARECEU', 'GESTOR');
 
 Entrar em <http://localhost:8080/portal-ecl/login> com `gestor` e a password escolhida.
 
-## Instalação no servidor (VM Windows Server)
+## Abrir o portal a partir de outros PCs (servidor sem VM)
 
-Resumo; os comandos completos estão no guia de trabalho (Pessoa A, passos 3 a 7).
+O servidor é um PC normal com Windows ligado à rede da escola, com Tomcat e MariaDB instalados como no passo 1 a 3.
+Comandos na PowerShell como Administrador.
 
-1. Instalar Temurin 21, Tomcat 10.1 (Windows Service Installer, **sem** Manager / Host Manager, porta 8080), MariaDB, Git e Maven.
-2. Pôr os serviços a arrancar sozinhos: `Set-Service Tomcat10 -StartupType Automatic` e `Set-Service MariaDB -StartupType Automatic`.
-3. Criar a BD, o utilizador `portal_app` e o utilizador `backup` (só leitura). No `my.ini`: `bind-address=127.0.0.1`.
-4. Firewall: abrir só a porta **8080** e o ping; a 3306 fica fechada.
-5. Criar `PASTA_TOMCAT\conf\portal-ecl.properties` e limitar as permissões com `icacls` à conta do serviço.
-6. Deploy (PowerShell como Administrador):
+1. Instalar o Tomcat 10.1 com o **Windows Service Installer** (sem Manager / Host Manager, porta 8080) e o MariaDB como serviço.
+2. Pôr os serviços a arrancar sozinhos:
+
+   ```powershell
+   Get-Service Tomcat*, MariaDB*            # ver os nomes exatos
+   Set-Service -Name Tomcat10 -StartupType Automatic
+   Set-Service -Name MariaDB -StartupType Automatic
+   ```
+
+3. MariaDB só para o próprio PC: no `my.ini`, secção `[mysqld]`, pôr `bind-address=127.0.0.1` e `Restart-Service MariaDB`.
+4. Abrir só a porta 8080 (e o ping) na Firewall do Windows:
+
+   ```powershell
+   New-NetFirewallRule -DisplayName "Portal ECL - Tomcat 8080" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow -Profile Any
+   Enable-NetFirewallRule -Name FPS-ICMP4-ERQ-In
+   ```
+
+5. Ver o IP do PC com `ipconfig` (linha «Endereço IPv4»).
+6. Deploy de uma versão nova:
 
    ```powershell
    cd C:\Projeto_Final_Integrador
@@ -98,7 +112,7 @@ Resumo; os comandos completos estão no guia de trabalho (Pessoa A, passos 3 a 7
    Copy-Item target\portal-ecl.war "C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\" -Force
    ```
 
-O portal fica em `http://IP-DO-SERVIDOR:8080/portal-ecl/`.
+Nos outros PCs da mesma rede: `http://IP-DO-PC:8080/portal-ecl/`.
 
 ## Backup e reposição
 
