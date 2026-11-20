@@ -1,0 +1,8 @@
+<nav class="submenu">
+  <a href="${pageContext.request.contextPath}/admin/resumo">Resumo</a>
+  <a href="${pageContext.request.contextPath}/admin/preinscricoes">Pré-inscrições</a>
+  <a href="${pageContext.request.contextPath}/admin/ocorrencias">Ocorrências</a>
+  <a href="${pageContext.request.contextPath}/admin/cursos">Cursos</a>
+  <span>Sessão: <c:out value="${sessionScope.utilizador.nome}"/></span>
+  <a href="${pageContext.request.contextPath}/logout">Sair</a>
+</nav>
