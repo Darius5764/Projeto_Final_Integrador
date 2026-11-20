@@ -1,0 +1,5 @@
+# Copiar para <pasta do Tomcat>/conf/portal-ecl.properties e mudar a password.
+# Este ficheiro de exemplo é o único que vai para o GitHub.
+db.url=jdbc:mariadb://localhost:3306/portal_ecl
+db.user=portal_app
+db.password=MUDAR_ESTA_PASSWORD

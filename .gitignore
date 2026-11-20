@@ -1,0 +1,10 @@
+target/
+*.properties
+!config/portal-ecl.properties.exemplo
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+*.zip
+*.cnf
