@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal ECL — Serviços</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilo.css">
+</head>
+<body>
+<header>
+  <a class="marca" href="${pageContext.request.contextPath}/">Portal ECL — Serviços</a>
+  <nav>
+    <a href="${pageContext.request.contextPath}/">Início</a>
+    <a href="${pageContext.request.contextPath}/cursos">Oferta formativa</a>
+    <a href="${pageContext.request.contextPath}/preinscricao">Pré-inscrição</a>
+    <a href="${pageContext.request.contextPath}/avarias">Reportar avaria</a>
+    <a href="${pageContext.request.contextPath}/admin/resumo">Área reservada</a>
+  </nav>
+</header>
+<main>
