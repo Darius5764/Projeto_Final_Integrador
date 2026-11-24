@@ -27,7 +27,7 @@ public class AdminOcorrenciasServlet extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/jsp/admin/ocorrencias.jsp").forward(req, resp);
     }
 
-    // Só aceita valores da lista fechada; qualquer outro valor (ou nenhum) = sem filtro
+
     private static String valido(Set<String> lista, String valor) {
         return valor != null && lista.contains(valor) ? valor : null;
     }

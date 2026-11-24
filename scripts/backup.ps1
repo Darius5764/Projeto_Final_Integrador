@@ -1,4 +1,4 @@
-# Cópia de segurança da BD do Portal ECL
+
 $MariaDbBin  = "C:\Program Files\MariaDB 11.4\bin"
 $Destino     = "C:\Backups\portal-ecl"
 $Credenciais = "C:\Backups\backup.cnf"

@@ -20,7 +20,7 @@ public class Ocorrencia {
 
     public Ocorrencia() { }
 
-    // Código visível do pedido, ex.: AV-00012
+
     public String getCodigo() { return String.format("AV-%05d", id); }
 
     public long getId() { return id; }

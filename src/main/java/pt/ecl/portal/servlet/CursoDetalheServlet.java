@@ -17,7 +17,7 @@ public class CursoDetalheServlet extends HttpServlet {
         Curso curso = null;
         try {
             curso = dao.procurar(Integer.parseInt(req.getParameter("id")));
-        } catch (NumberFormatException e) { /* id inválido: fica null */ }
+        } catch (NumberFormatException e) { }
         catch (SQLException e) { throw new ServletException(e); }
 
         if (curso == null) { resp.sendError(404); return; }

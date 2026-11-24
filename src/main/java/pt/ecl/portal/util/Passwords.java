@@ -34,6 +34,6 @@ public final class Passwords {
 
     private static String b64(byte[] b) { return Base64.getEncoder().encodeToString(b); }
 
-    // Para gerar o hash do gestor: java -cp target\classes pt.ecl.portal.util.Passwords "password"
+
     public static void main(String[] args) { System.out.println(gerarHash(args[0])); }
 }

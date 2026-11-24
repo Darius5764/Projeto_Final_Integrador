@@ -20,7 +20,7 @@ table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: .5rem; border-bottom: 1px solid #ddd; }
 .aviso { background: #fff4ce; padding: .75rem 1rem; font-size: .85rem; text-align: center; }
 
-/* filtros e formulários pequenos dentro das tabelas */
+
 .filtros { display: flex; flex-wrap: wrap; gap: .5rem; align-items: end; margin-bottom: 1rem; }
 .filtros input, .filtros select { width: auto; flex: 1 1 180px; }
 .filtros button, td form button { margin-top: 0; }

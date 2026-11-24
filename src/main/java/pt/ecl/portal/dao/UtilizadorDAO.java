@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class UtilizadorDAO {
 
-    // Só gestores e técnicos entram na área reservada
+
     public Utilizador procurarGestor(String identificador) throws SQLException {
         String sql = "SELECT * FROM utilizador WHERE identificador = ? AND ativo = TRUE"
                    + " AND perfil IN ('GESTOR','TECNICO')";

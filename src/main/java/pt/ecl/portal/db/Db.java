@@ -9,7 +9,7 @@ public final class Db {
     private static final Properties CONFIG = new Properties();
 
     static {
-        // Ficheiro fora do repositório: <pasta do Tomcat>/conf/portal-ecl.properties
+
         Path ficheiro = Path.of(System.getProperty("catalina.base"), "conf", "portal-ecl.properties");
         try (InputStream in = Files.newInputStream(ficheiro)) {
             CONFIG.load(in);

@@ -48,20 +48,20 @@ public class AvariasServlet extends HttpServlet {
             o.setCategoria(categoria);
             o.setDescricao(descricao);
             o.setImpedeAula(impedeAula);
-            o.setPrioridade(prioridade(categoria, impedeAula));     // calculada no servidor
+            o.setPrioridade(prioridade(categoria, impedeAula));
             long id = dao.inserir(o);
             req.getSession().setAttribute("avariaCriada", id);
-            resp.sendRedirect(req.getContextPath() + "/avarias/confirmacao");   // POST → redirect → GET
+            resp.sendRedirect(req.getContextPath() + "/avarias/confirmacao");
         } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
 
-    // Regra simples de prioridade (explicada no formulário e no relatório)
+
     static String prioridade(String categoria, boolean impedeAula) {
-        if (impedeAula) return "ELEVADA";                                      // a aula não pode decorrer
+        if (impedeAula) return "ELEVADA";
         if (categoria.equals("MOBILIARIO") || categoria.equals("OUTRO")) return "BAIXA";
-        return "NORMAL";                                                       // PC, impressora, software, ...
+        return "NORMAL";
     }
 
     private void mostrar(HttpServletRequest req, HttpServletResponse resp, Map<String, String> erros)

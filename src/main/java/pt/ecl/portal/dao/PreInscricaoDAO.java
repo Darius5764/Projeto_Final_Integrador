@@ -17,7 +17,7 @@ public class PreInscricaoDAO {
         }
     }
 
-    // Filtros opcionais: null = todos
+
     public List<PreInscricao> listar(Integer idCurso, String estado) throws SQLException {
         String sql = "SELECT p.*, c.nome AS nome_curso FROM pre_inscricao p JOIN curso c ON c.id_curso = p.id_curso"
                    + " WHERE (? IS NULL OR p.id_curso = ?) AND (? IS NULL OR p.estado = ?)"
@@ -45,7 +45,7 @@ public class PreInscricaoDAO {
         }
     }
 
-    // Muda o estado e regista no histórico numa só transação: ou fica tudo gravado, ou nada.
+
     public boolean mudarEstado(long id, String novoEstado, int idUtilizador) throws SQLException {
         try (Connection c = Db.ligar()) {
             c.setAutoCommit(false);
@@ -69,7 +69,7 @@ public class PreInscricaoDAO {
         }
     }
 
-    // Para o painel «Resumo»: estado -> quantidade
+
     public Map<String, Integer> contarPorEstado() throws SQLException {
         return contar("SELECT estado, COUNT(*) FROM pre_inscricao GROUP BY estado");
     }

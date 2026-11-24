@@ -8,6 +8,6 @@ public final class Datas {
 
     private Datas() { }
 
-    // Data e hora no formato português; vazio se não houver data
+
     public static String texto(LocalDateTime d) { return d == null ? "" : d.format(FORMATO); }
 }

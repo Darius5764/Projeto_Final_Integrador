@@ -29,7 +29,7 @@ public class PreInscricaoServlet extends HttpServlet {
         String obs = limpar(req.getParameter("observacoes"));
         Map<String, String> erros = new HashMap<>();
 
-        // Validação no servidor (o browser também valida, mas pode ser contornado)
+
         if (nome.length() < 3 || nome.length() > 120) erros.put("nome", "Indique o nome completo (mínimo 3 caracteres).");
         if (email.length() > 150 || !EMAIL.matcher(email).matches()) erros.put("email", "Indique um email válido.");
         if (!telefone.isEmpty() && !TELEFONE.matcher(telefone).matches()) erros.put("telefone", "Telefone inválido (9 dígitos).");
@@ -37,16 +37,16 @@ public class PreInscricaoServlet extends HttpServlet {
         if (req.getParameter("privacidade") == null) erros.put("privacidade", "Tem de confirmar a informação de privacidade.");
 
         int idCurso = -1;
-        try { idCurso = Integer.parseInt(req.getParameter("curso")); } catch (NumberFormatException e) { /* fica -1 */ }
+        try { idCurso = Integer.parseInt(req.getParameter("curso")); } catch (NumberFormatException e) {  }
         try {
             if (idCurso < 1 || !cursos.existe(idCurso)) erros.put("curso", "Escolha um curso da lista.");
             if (!erros.isEmpty()) { mostrar(req, resp, erros, req.getParameter("curso")); return; }
 
             long id = dao.inserir(idCurso, nome, email, telefone.isEmpty() ? null : telefone, obs.isEmpty() ? null : obs);
-            req.getSession().setAttribute("pedidoCriado", id);          // nada de dados pessoais no URL
-            resp.sendRedirect(req.getContextPath() + "/preinscricao/confirmacao");   // POST → redirect → GET
+            req.getSession().setAttribute("pedidoCriado", id);
+            resp.sendRedirect(req.getContextPath() + "/preinscricao/confirmacao");
         } catch (SQLException e) {
-            throw new ServletException(e);       // vai para a página de erro genérica
+            throw new ServletException(e);
         }
     }
 

@@ -5,7 +5,7 @@ import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 import java.util.Map;
 
-// Na BD os estados ficam sem acentos (EM_ANALISE); nas páginas usa-se ${rotulo[x.estado]}.
+
 @WebListener
 public class Rotulos implements ServletContextListener {
     public static final Map<String, String> TEXTO = Map.ofEntries(

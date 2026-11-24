@@ -27,13 +27,13 @@ public class LoginServlet extends HttpServlet {
         catch (SQLException e) { throw new ServletException(e); }
 
         if (u == null || !Passwords.verificar(pw, u.getPasswordHash())) {
-            req.setAttribute("erro", "Identificador ou password incorretos.");    // mesma mensagem nos dois casos
+            req.setAttribute("erro", "Identificador ou password incorretos.");
             req.getRequestDispatcher("/WEB-INF/jsp/admin/login.jsp").forward(req, resp);
             return;
         }
-        u.setPasswordHash(null);                       // o hash não fica na sessão
+        u.setPasswordHash(null);
         req.getSession(true);
-        req.changeSessionId();                         // evita fixação de sessão
+        req.changeSessionId();
         req.getSession().setAttribute("utilizador", u);
         resp.sendRedirect(req.getContextPath() + "/admin/resumo");
     }

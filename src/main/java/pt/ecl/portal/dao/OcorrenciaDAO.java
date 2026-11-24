@@ -33,7 +33,7 @@ public class OcorrenciaDAO {
         }
     }
 
-    // Filtros opcionais: null = todos
+
     public List<Ocorrencia> listar(Integer idSala, String estado, String prioridade) throws SQLException {
         String sql = "SELECT o.*, s.codigo AS sala_codigo FROM ocorrencia o JOIN sala s ON s.id = o.id_sala"
                    + " WHERE (? IS NULL OR o.id_sala = ?) AND (? IS NULL OR o.estado = ?)"
@@ -51,7 +51,7 @@ public class OcorrenciaDAO {
         }
     }
 
-    // Mesma ideia do PreInscricaoDAO.mudarEstado: estado + histórico numa só transação.
+
     public boolean mudarEstado(long id, String novoEstado, String resolucao, int idUtilizador) throws SQLException {
         try (Connection c = Db.ligar()) {
             c.setAutoCommit(false);
@@ -79,7 +79,7 @@ public class OcorrenciaDAO {
         }
     }
 
-    // Histórico de estados de uma ocorrência (cada linha: anterior, novo, quem, quando)
+
     public List<Map<String, Object>> historico(long id) throws SQLException {
         String sql = "SELECT h.estado_anterior, h.estado_novo, h.alterado_em, u.nome FROM historico_estado h"
                    + " JOIN utilizador u ON u.id = h.id_utilizador"

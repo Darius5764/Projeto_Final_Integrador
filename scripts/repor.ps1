@@ -1,4 +1,4 @@
-# Uso: .\repor.ps1 -Ficheiro C:\Backups\portal-ecl\portal_ecl_2026-11-25_1300.sql.zip [-Base portal_ecl_teste]
+
 param(
     [Parameter(Mandatory = $true)] [string]$Ficheiro,
     [string]$Base = "portal_ecl"

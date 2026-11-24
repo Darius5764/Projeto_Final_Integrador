@@ -6,7 +6,7 @@
   <request-character-encoding>UTF-8</request-character-encoding>
   <response-character-encoding>UTF-8</response-character-encoding>
 
-  <!-- Os .jspf (cabeçalho, rodapé) também são lidos em UTF-8; sem isto os acentos aparecem trocados -->
+
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>

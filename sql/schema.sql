@@ -1,5 +1,3 @@
--- Portal ECL — estrutura da base de dados
--- Os estados ficam com códigos sem acentos (ex.: EM_ANALISE); as páginas mostram o texto bonito.
 SET NAMES utf8mb4;
 CREATE DATABASE IF NOT EXISTS portal_ecl CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE portal_ecl;
@@ -8,13 +6,11 @@ CREATE TABLE curso (
    id_curso             INT AUTO_INCREMENT PRIMARY KEY,
    nome                 VARCHAR(150) NOT NULL,
    area                 VARCHAR(100),
-   modalidade           VARCHAR(50) NOT NULL,           -- Profissional, Aprendizagem, ...
-   nivel                VARCHAR(80),                    -- ex.: Nível 4 QNQ / 12.º ano
-   horas_total          INT NULL,                       -- NULL = «A confirmar»
+   modalidade           VARCHAR(50) NOT NULL,
    componentes          TEXT,
    perfil_saida         TEXT,
    saidas_profissionais TEXT,
-   fonte                VARCHAR(255) NOT NULL,          -- link da página oficial
+   fonte                VARCHAR(255) NOT NULL,
    data_verificacao     DATE NOT NULL,
    ativo                BOOLEAN NOT NULL DEFAULT TRUE
 );
@@ -49,7 +45,7 @@ CREATE TABLE pre_inscricao (
 
 CREATE TABLE ocorrencia (
    id                INT AUTO_INCREMENT PRIMARY KEY,
-   id_utilizador     INT NULL,                         -- NULL: o formulário público não tem login
+   id_utilizador     INT NULL,
    nome_reportante   VARCHAR(100) NOT NULL,
    perfil_reportante ENUM('FORMANDO','FORMADOR') NOT NULL,
    id_sala           INT NOT NULL,
@@ -76,3 +72,7 @@ CREATE TABLE historico_estado (
    alterado_em     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
    CONSTRAINT fk_he_utilizador FOREIGN KEY (id_utilizador) REFERENCES utilizador(id)
 );
+
+SELECT user, host FROM mysql.user;
+
+SELECT * FROM 

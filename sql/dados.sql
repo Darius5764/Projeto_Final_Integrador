@@ -1,9 +1,6 @@
--- Portal ECL — dados iniciais
--- Cursos tirados das páginas oficiais da ECL (coluna fonte). O que não está publicado fica
--- «A confirmar» (horas_total a NULL). Antes da entrega, confirmar a lista completa em
--- https://escolacomerciolisboa.pt/escola-profissional/cursos-profissionalizantes-ecl/
+
 USE portal_ecl;
-SET NAMES utf8mb4;   -- garante que os acentos ficam bem gravados (também na cmd do Windows)
+SET NAMES utf8mb4;
 
 INSERT INTO curso (nome, area, modalidade, nivel, horas_total, componentes, perfil_saida,
                    saidas_profissionais, fonte, data_verificacao) VALUES
@@ -62,4 +59,3 @@ INSERT INTO pre_inscricao (id_curso, nome, email, telefone, observacoes) VALUES
 INSERT INTO ocorrencia (nome_reportante, perfil_reportante, id_sala, categoria, descricao, impede_aula, prioridade) VALUES
   ('Formador Fictício', 'FORMADOR', 4, 'PROJETOR', 'O projetor não liga e a aula precisa de apresentação.', TRUE, 'ELEVADA');
 
--- O utilizador gestor NÃO vai neste ficheiro: cada pessoa cria o seu com o hash (ver README).

@@ -8,7 +8,7 @@ import pt.ecl.portal.model.Ocorrencia;
 import java.io.IOException;
 import java.sql.SQLException;
 
-// Consulta pública: só mostra dados técnicos, nunca o nome de quem reportou, e não altera nada.
+
 @WebServlet("/avarias/consultar")
 public class AvariaConsultaServlet extends HttpServlet {
     @Override
