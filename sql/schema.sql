@@ -1,5 +1,5 @@
 SET NAMES utf8mb4;
-CREATE DATABASE IF NOT EXISTS portal_ecl CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE portal_ecl CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE portal_ecl;
 
 CREATE TABLE curso (
@@ -73,6 +73,7 @@ CREATE TABLE historico_estado (
    CONSTRAINT fk_he_utilizador FOREIGN KEY (id_utilizador) REFERENCES utilizador(id)
 );
 
-SELECT user, host FROM mysql.user;
 
-SELECT * FROM 
+SELECT * FROM ocorrencia;
+
+DELETE FROM pre_inscricao WHERE id = 1;

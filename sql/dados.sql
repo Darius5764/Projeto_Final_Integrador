@@ -1,4 +1,3 @@
-
 USE portal_ecl;
 SET NAMES utf8mb4;
 
