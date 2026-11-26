@@ -74,6 +74,4 @@ CREATE TABLE historico_estado (
 );
 
 
-SELECT * FROM ocorrencia;
-
-DELETE FROM pre_inscricao WHERE id = 1;
+SELECT * FROM pre_inscricao;

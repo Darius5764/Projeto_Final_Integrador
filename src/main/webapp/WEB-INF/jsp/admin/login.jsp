@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ include file="/WEB-INF/jsp/inc/cabecalho.jspf" %>
-<h1>Área reservada</h1>
+<h1>Login</h1>
 <p>Acesso apenas para gestores e técnicos da escola.</p>
 <form method="post" action="${pageContext.request.contextPath}/login">
   <label for="identificador">Identificador</label>
